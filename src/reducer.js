@@ -94,6 +94,24 @@
     },
     
 };
+
+function recursiveCopyObject (obj) {
+    if (typeof obj !== 'object') {
+        return obj;
+    } else if (Array.isArray(obj)) {
+        let tempArray = [];
+        obj.forEach((e) => {
+            tempArray.push(recursiveCopyObject(e));
+        });
+        return tempArray;
+    } else {
+        let tempObj = {};
+        Object.keys(obj).forEach((k)=>{
+            tempObj[k] = recursiveCopyObject(obj[k]);
+        });
+        return tempObj
+    }
+}
  
  export function reducer (state = initalState, action) {
     console.log(action.type);
@@ -103,23 +121,25 @@
     switch (action.type) {
         case 'INIT_MOVE':
             return {
-                ...state, move_in_progress: true, limbo: {...action.token}
+                ...recursiveCopyObject(state), move_in_progress: true, limbo: {...action.token}
             };
         case 'FINISH_MOVE':
-            newState = {...state};
-            newToken = {...state.limbo, quadrant: action.quadrant, square: action.square};
+            newState = recursiveCopyObject(state); // this only copies primary level feilds but complex sub objects are passed by reference.
+            newToken = {...recursiveCopyObject(state.limbo), quadrant: action.quadrant, square: action.square};
             newState.board['q_'+ state.limbo.quadrant].squares[state.limbo.square] = {};
             newState.board['q_'+ newToken.quadrant].squares[newToken.square] = newToken;
+            newState.player_turn = newState.player_turn === 3 ? newState.player_turn + 1 : (newState.player_turn + 1) % 4; // increment turn 1-4
             return {
                 ...newState, move_in_progress: false, limbo: null
             };
         case 'CAPTURE_TOKEN':
-            newState = {...state};
+            newState = recursiveCopyObject(state);
             // newToken = {...state.limbo, quadrant: action.quadrant, square: action.square};
             // newState.board['q_'+ state.limbo.quadrant].squares[state.limbo.square] = {};
             // newState.board['q_'+ newToken.quadrant].squares[newToken.square] = newToken;
             newState['player_'+state.player_turn].captures.push(action.captured_token);
             return newState;
+            // finish move will fire after this. (due to compound click handlers?)
         default:
             return state;
     }
