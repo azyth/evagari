@@ -95,6 +95,10 @@
     
 };
 
+/*
+returns a copy of a supplied object. 
+this works with primitives, arrays and JSON objects, and any nested collection of them. 
+*/
 function recursiveCopyObject (obj) {
     if (typeof obj !== 'object') {
         return obj;

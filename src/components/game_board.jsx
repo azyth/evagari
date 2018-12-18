@@ -7,7 +7,9 @@ class GameBoard extends Component {
 
     styles = {
         board: {
-            position: 'relative'
+            position: 'relative',
+            // width:'100%',
+            // paddingBottom: '100%'
         }
     }
     render() { 

@@ -5,17 +5,17 @@ class Token extends Component {
     
     styles = {
         token: {
-        background: '#fff',
-        borderColor: '#000',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderRadius: 30,
-        height: 60,
-        width: 60,
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+            background: '#fff',
+            borderColor: '#000',
+            borderWidth: 1,
+            borderStyle: 'solid',
+            borderRadius: 30,
+            height: 60,
+            width: 60,
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
         },
         marker: {
             position: 'relative',
