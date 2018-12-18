@@ -96,7 +96,7 @@
 };
 
 function recursiveCopyObject (obj) {
-    if (typeof obj !== 'object') {
+    if (!obj || typeof obj !== 'object') {
         return obj;
     } else if (Array.isArray(obj)) {
         let tempArray = [];
