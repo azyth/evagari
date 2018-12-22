@@ -9,13 +9,14 @@ class App extends Component {
   render() {
     return (
       <Provider store={store} className="App">
-        <header className="App-header">
-          <div>
+        <div className='play_area'>
+          <header className="App-header">
             <Dashboard></Dashboard>
-            <GameBoard>
-            </GameBoard>
-          </div>
-        </header>
+          </header>
+
+            <GameBoard></GameBoard>
+          
+        </div>
       </Provider>
     );
   }

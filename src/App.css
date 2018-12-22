@@ -3,16 +3,110 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
 }
+/* html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  max-height: 100%;
+}
+div#root{
+  min-height: 100%;
+  max-height: 100%;
+} */
 
-.App-header {
+.play_area {
+  height:100vh;
+
   background-color: #282c34;
-  height: 900px;
-  width: 900px;
-  padding: 50px;
-}
-.dashboard{
+  display: grid;
+  grid-template-areas:
+      '. dashboard .'
 
+      '. gameboard .';
+  grid-template-rows: 10%  90%;
+  grid-template-columns: 3% 90% 7%;
 }
+
+.dash_board{
+  grid-area: dashboard;
+}
+
+.game_board{
+  /* height: 100%; */
+  grid-area: gameboard;
+  display: grid;
+  grid-template-areas:
+      'q1 . q2 '
+      '.  .  .'
+      'q4 . q3 ';
+  grid-template-rows: 49% 2% 49%;
+  grid-template-columns: 49% 2% 49%;
+  width:100%;
+  padding-bottom: 0%;
+  min-width: 490px;
+  margin-top: -90%;
+
+  /* sizing css
+  position: absolute;
+  top:0;
+  left:0;
+  bottom: 0;
+  right: 0;
+  text-align: center; */
+}
+
+.q1{ grid-area: q1;}
+.q2{ grid-area: q2;}
+.q3{ grid-area: q3;}
+.q4{ grid-area: q4;}
+
+.quadrant {
+  position:relative;
+  width: 100%;  
+}
+.quadrant:before{
+  content: "";
+  display: block;
+  padding-top: 100%;   /*aspect ratio, try: 50%, 200%, 75%, 56.25%*/
+}
+
+.player_board{
+  display: grid;
+  grid-template-areas:
+      's1  s2  s3  s4 '
+      's12 s13 s14 s5'
+      's11 s16 s15 s6'
+      's10 s9  s8  s7';
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  /* sizing css */
+  position: absolute;
+  top:0;
+  left:0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+} 
+
+
+.s1 {grid-area: s1;}
+.s2 {grid-area: s2;}
+.s3 {grid-area: s3;}
+.s4 {grid-area: s4;}
+.s5 {grid-area: s5;}
+.s6 {grid-area: s6;}
+.s7 {grid-area: s7;}
+.s8 {grid-area: s8;}
+.s9 {grid-area: s9;}
+.s10 {grid-area: s10;}
+.s11 {grid-area: s11;}
+.s12 {grid-area: s12;}
+.s13 {grid-area: s13;}
+.s14 {grid-area: s14;}
+.s15 {grid-area: s15;}
+.s16 {grid-area: s16;}
 
 @keyframes App-logo-spin {
   from {
@@ -22,3 +116,54 @@
     transform: rotate(360deg);
   }
 }
+
+.player_1 {
+  background: blue;
+}
+.player_2 {
+  background: red;
+}
+.player_3 {
+  background: yellow;
+}
+.player_4 {
+  background: green;
+}
+
+
+/*  square resizing css sample classes */
+
+/* 
+<div class="outer">
+    <div class="image-container">
+        <div class="image-container-content">
+			
+        </div>
+    </div>
+</div> */
+
+.image-container{
+  position:relative;
+  width: 100%;                 /*size relative parent element*/
+
+  border: solid black 1px;
+  margin: 5px;
+}
+.image-container:before{
+  content: "";
+  display: block;
+  padding-top: 100%;   /*aspect ratio, try: 50%, 200%, 75%, 56.25%*/
+}
+.image-container-content{
+  position: absolute;
+  top:0;
+  left:0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+}
+
+.outer {
+  width: 50%;
+}
+

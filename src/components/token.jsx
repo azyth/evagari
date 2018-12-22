@@ -5,13 +5,13 @@ class Token extends Component {
     
     styles = {
         token: {
-            background: '#fff',
+            // background: '#fff',
             borderColor: '#000',
             borderWidth: 1,
             borderStyle: 'solid',
             borderRadius: 30,
-            height: 60,
-            width: 60,
+            height: '60%',
+            width: '60%',
             position: 'absolute',
             top: '50%',
             left: '50%',
@@ -45,6 +45,7 @@ class Token extends Component {
     render() { 
         return ( 
             <div 
+                className={'player_'+this.props.player}
                 style={this.styles.token}
                 onClick={this.props.onClickHandler}>
                 <p style={this.styles.marker}>{this.displayType(this.props.type)}</p>

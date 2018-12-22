@@ -8,6 +8,7 @@ class Square extends Component {
         if (this.props.board['q_'+this.props.quadrant].squares[this.props.number].type !== undefined) {
             return (
                 <Token 
+                    player={this.props.board['q_'+this.props.quadrant].squares[this.props.number].player}
                     onClickHandler={this.initMoveToken} 
                     type={this.props.board['q_'+this.props.quadrant].squares[this.props.number].type}>
                 </Token>
@@ -19,8 +20,9 @@ class Square extends Component {
         borderColor: '#000',
         borderWidth: 1,
         borderStyle: 'solid',
-        height: 98,
-        width: 98,
+        position: 'relative',
+        // height: 98,
+        // width: 98,
     }
     initMoveToken = () => {
         if (!this.props.move_in_progress) {
@@ -48,7 +50,7 @@ class Square extends Component {
 
     render() { 
         return ( 
-            <div onClick={this.finishMoveToken} style={this.styles}>
+            <div className={'s'+(this.props.number+1)} onClick={this.finishMoveToken} style={this.styles}>
             <p>{this.props.number}</p>
                 {this.insertToken()}
             </div>
