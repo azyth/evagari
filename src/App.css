@@ -3,17 +3,6 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
 }
-/* html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-  max-height: 100%;
-}
-div#root{
-  min-height: 100%;
-  max-height: 100%;
-} */
 
 .play_area {
   height:100vh;
@@ -30,11 +19,41 @@ div#root{
 
 .dash_board{
   grid-area: dashboard;
+  display: grid;
+  grid-template: ' c1 c2 m c3 c4 ';
+  grid-template-rows: ' 20% 20% 20% 20% 20%';
+  width:100%;
+  padding-bottom: 0%;
+  min-width: 490px;
+}
+.player_cell {
+  text-align: center;
+  margin: 10px;
+}
+
+.c1 {grid-area: c1;}
+.c2 {grid-area: c2;}
+.c3 {grid-area: c3;}
+.c4 {grid-area: c4;}
+.m {
+  grid-area: m;
+  background: #d0d0d0;
+}
+
+.game_container {
+  grid-area: gameboard;
+  position:relative;
+  width: 100%;  
+}
+.game_container:before{
+  content: "";
+  display: block;
+  padding-top: 100%;   /*aspect ratio, try: 50%, 200%, 75%, 56.25%*/
 }
 
 .game_board{
   /* height: 100%; */
-  grid-area: gameboard;
+  
   display: grid;
   grid-template-areas:
       'q1 . q2 '
@@ -47,13 +66,6 @@ div#root{
   min-width: 490px;
   margin-top: -90%;
 
-  /* sizing css
-  position: absolute;
-  top:0;
-  left:0;
-  bottom: 0;
-  right: 0;
-  text-align: center; */
 }
 
 .q1{ grid-area: q1;}

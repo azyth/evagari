@@ -14,7 +14,7 @@ class GameBoard extends Component {
     }
     render() { 
         return ( 
-            <div className="quadrant ">
+            <div className="game_container ">
             <div className="game_board" style={this.styles.board}>
                 <PlayerBoard quadrant={1} player={1}></PlayerBoard>
                 <PlayerBoard quadrant={2} player={2}></PlayerBoard>

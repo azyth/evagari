@@ -10,9 +10,7 @@ class App extends Component {
     return (
       <Provider store={store} className="App">
         <div className='play_area'>
-          <header className="App-header">
             <Dashboard></Dashboard>
-          </header>
 
             <GameBoard></GameBoard>
           

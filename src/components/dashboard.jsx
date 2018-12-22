@@ -7,15 +7,17 @@ class Dashboard extends Component {
     
     render() { 
         return ( 
-            <div  className='dashboard'>
-                {/* <PlayerCard player={1}></PlayerCard>
+            <div className='dash_board'>
+
+                <PlayerCard player={1}></PlayerCard>
                 <PlayerCard player={2}></PlayerCard>
-                <div style={{height:80, width:80, background: '#c0c0c0', margin: 10, display: 'table-cell'}}>
+                <div className='player_cell m'>
                     <p>PLAYER TURN</p>
                     <p>{this.props.player_turn}</p>
                 </div>
                 <PlayerCard player={3}></PlayerCard>
-                <PlayerCard player={4}></PlayerCard> */}
+                <PlayerCard player={4}></PlayerCard>
+
             </div>
          );
     }

@@ -6,18 +6,29 @@ class PlayerCard extends Component {
     state = {  }
 
     determineDropShadown(){
-        let styles = {height:'80%', background: '#ddd', margin: 10, display: 'table-cell'};
+        let styles = {};
         if (this.props.player_turn === this.props.player) {
-            styles.boxShadow = '0 0 0 1px red';
+            styles.boxShadow = '0 0 0 5px white';
         }
         return styles
+    }
+    capturedPieces() {
+        let captures = '';
+        this.props['player_'+this.props.player].captures.forEach(c => {
+            if (captures === '') {
+                captures = c.player + '-' + c.type;
+            } else {
+                captures = captures + ' : ' + c.player + '-' + c.type;
+            }
+        });
+        return captures;
     }
     
     render() { 
         return ( 
-            <div style={this.determineDropShadown()}>
-                <p>PLAYER</p>
-                <p>{this.props.player}</p>
+            <div className={'player_cell c' + this.props.player + ' player_'+ this.props.player} style={this.determineDropShadown()}>
+                <p>PLAYER {this.props.player}</p>
+                <p>captures: {this.capturedPieces()}</p>
             </div>
          );
     }
