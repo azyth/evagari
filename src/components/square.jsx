@@ -25,7 +25,9 @@ class Square extends Component {
         // width: 98,
     }
     initMoveToken = () => {
-        if (!this.props.move_in_progress) {
+        if (this.props.player_turn !== this.props.player) {
+            //do nothing since not your token
+        } else if (!this.props.move_in_progress) {
             console.log('token clicked in square: ' + this.props.number );
             this.props.dispatch({
                 type:'INIT_MOVE', 

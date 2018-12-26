@@ -50,22 +50,22 @@ class PlayerBoard extends Component {
         return ( 
             <div className={ 'quadrant q'+this.props.quadrant }>
             <div id={'p'+this.props.player} className='player_board' style={this.styles.quadrant}>
-                <Square number={0} quadrant={this.props.quadrant}></Square>
-                <Square number={1} quadrant={this.props.quadrant}></Square>
-                <Square number={2} quadrant={this.props.quadrant}></Square>
-                <Square number={3} quadrant={this.props.quadrant}></Square>
-                <Square number={4} quadrant={this.props.quadrant}></Square>
-                <Square number={5} quadrant={this.props.quadrant}></Square>
-                <Square number={6} quadrant={this.props.quadrant}></Square>
-                <Square number={7} quadrant={this.props.quadrant}></Square>
-                <Square number={8} quadrant={this.props.quadrant}></Square>
-                <Square number={9} quadrant={this.props.quadrant}></Square>
-                <Square number={10} quadrant={this.props.quadrant}></Square>
-                <Square number={11} quadrant={this.props.quadrant}></Square>
-                <Square number={12} quadrant={this.props.quadrant}></Square>
-                <Square number={13} quadrant={this.props.quadrant}></Square>
-                <Square number={14} quadrant={this.props.quadrant}></Square>
-                <Square number={15} quadrant={this.props.quadrant}></Square>
+                <Square number={0} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={1} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={2} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={3} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={4} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={5} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={6} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={7} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={8} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={9} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={10} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={11} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={12} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={13} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={14} player={this.props.player} quadrant={this.props.quadrant}></Square>
+                <Square number={15} player={this.props.player} quadrant={this.props.quadrant}></Square>
             </div>
             </div>
          );
