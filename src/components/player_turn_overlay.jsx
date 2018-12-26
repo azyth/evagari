@@ -30,6 +30,7 @@ class PlayerTurnOverlay extends Component {
         let div;
         if (this.props.player_turn === this.props.player && !this.props.token_move_selected) {
             div = <div  className={"player_turn_overlay q_"+this.props.player} >
+                <p className='header'>{'PLAYER '+ this.props.player}</p>
                 <p>&lt; move counter cloackwise?</p>
                 <p onClick={this.rotateTileCW}>turn counter clockwise</p>
                 <p onClick={this.dismissOverlay}>no tile movement</p>
