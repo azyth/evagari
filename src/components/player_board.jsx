@@ -17,42 +17,39 @@ class PlayerBoard extends Component {
         return (player === 1 || player === 4)? 0 : 410;
     }
     rotate = (player) => {
-        let d;
-        switch (player) {
-            case 1:
-                d = 0;
-                break;
-            case 2:
-                d = 90;
-                break;
-            case 3:
-                d = 180;
-                break;
-            case 4:
-                d = 270;
-                break;
-            default:
+        // let d;
+        // switch (player) {
+        //     case 1:
+        //         d = 0;
+        //         break;
+        //     case 2:
+        //         d = 90;
+        //         break;
+        //     case 3:
+        //         d = 180;
+        //         break;
+        //     case 4:
+        //         d = 270;
+        //         break;
+        //     default:
 
-        }
-        return 'rotate(' + d + 'deg)';
+        // }
+        // return 'rotate(' + d + 'deg)';
+        return 'rotate(' + this.props.board['q_'+this.props.player].rotation + 'deg)';
     }
     styles = {
         quadrant: {
-            transform: this.rotate(this.props.player),
+            transform: 'rotate(' + this.props.board['q_'+this.props.player].rotation + 'deg)', //this.rotate(this.props.player),
             borderColor: '#ff0000',
             borderStyle: 'solid',
-            boarderWidth: 5,
-            // height: '50%',
-            // width: '50%',
-            // width:'100%',
-            // paddingBottom: '100%'
+            boarderWidth: 5
         }
         
     }
     render() { 
         return ( 
             <div className={ 'quadrant q'+this.props.quadrant }>
-            <div className='player_board' style={this.styles.quadrant}>
+            <div id={'p'+this.props.player} className='player_board' style={this.styles.quadrant}>
                 <Square number={0} quadrant={this.props.quadrant}></Square>
                 <Square number={1} quadrant={this.props.quadrant}></Square>
                 <Square number={2} quadrant={this.props.quadrant}></Square>
@@ -76,4 +73,4 @@ class PlayerBoard extends Component {
 }
 const mapStateToProps = state => state
  
-export default connect()(PlayerBoard);
+export default connect(mapStateToProps)(PlayerBoard);

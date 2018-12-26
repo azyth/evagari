@@ -1,10 +1,12 @@
  const initalState = { 
     player_turn: 1,
     move_in_progress: false,
+    token_move_selected: false,
     limbo: null,
     board: {
         q_1: {
             controller: 1, //player
+            rotation: 0,
             squares: [
                 {player: 1, type: 'K', points: 4, quadrant: 1, square: 0},
                 {player: 1, type: 'S', points: 1, quadrant: 1, square: 1},
@@ -16,6 +18,7 @@
         },
         q_2: {
             controller: 2, //player
+            rotation: 90,
             squares: [
                 {player: 2, type: 'K', points: 4, quadrant: 2, square: 0},
                 {player: 2, type: 'S', points: 1, quadrant: 2, square: 1},
@@ -27,6 +30,7 @@
         },
         q_3: {
             controller: 3, //player
+            rotation: 180,
             squares: [
                 {player: 3, type: 'K', points: 4, quadrant: 3, square: 0},
                 {player: 3, type: 'S', points: 1, quadrant: 3, square: 1},
@@ -38,6 +42,7 @@
         },
         q_4: {
             controller: 4, //player
+            rotation: 270,
             squares: [
                 {player: 4, type: 'K', points: 4, quadrant: 4, square: 0},
                 {player: 4, type: 'S', points: 1, quadrant: 4, square: 1},
@@ -134,7 +139,7 @@ function recursiveCopyObject (obj) {
             newState.board['q_'+ newToken.quadrant].squares[newToken.square] = newToken;
             newState.player_turn = newState.player_turn === 3 ? newState.player_turn + 1 : (newState.player_turn + 1) % 4; // increment turn 1-4
             return {
-                ...newState, move_in_progress: false, limbo: null
+                ...newState, move_in_progress: false, limbo: null, token_move_selected: false
             };
         case 'CAPTURE_TOKEN':
             newState = recursiveCopyObject(state);
@@ -144,6 +149,28 @@ function recursiveCopyObject (obj) {
             newState['player_'+state.player_turn].captures.push(action.captured_token);
             return newState;
             // finish move will fire after this. (due to compound click handlers?)
+        case 'DISMISS_TILE_OVERLAY':
+            newState = recursiveCopyObject(state);
+            newState.token_move_selected=true;
+            return newState;
+        case 'ROTATE_TILE':
+            newState = recursiveCopyObject(state);
+            const rotation = action.cw ? 90 : -90;
+            newState.board['q_'+action.player].rotation+=rotation;
+            // var curr_value = document.getElementById('p'+action.player).style.transform;
+            var new_value = "rotate("+newState.board['q_'+action.player].rotation+"deg)";
+            // if(curr_value !== ""){
+            // var new_rotate = parseInt(curr_value.replace("rotate(","").replace(")","")) + 90;
+            // new_value = "rotate(" + new_rotate + "deg)";
+            // }
+            document.getElementById('p'+action.player).style.transform = new_value;
+            return newState;
+        case 'FINISH_TURN':
+            newState = recursiveCopyObject(state);
+            newState.player_turn = newState.player_turn === 3 ? newState.player_turn + 1 : (newState.player_turn + 1) % 4; // increment turn 1-4
+            return {
+                ...newState, move_in_progress: false, limbo: null, token_move_selected: false
+            };
         default:
             return state;
     }

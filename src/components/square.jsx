@@ -51,7 +51,7 @@ class Square extends Component {
     render() { 
         return ( 
             <div className={'s'+(this.props.number+1)} onClick={this.finishMoveToken} style={this.styles}>
-            <p>{this.props.number}</p>
+            {/* <p>{this.props.number}</p> */}
                 {this.insertToken()}
             </div>
          );

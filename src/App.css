@@ -120,6 +120,11 @@
 .s15 {grid-area: s15;}
 .s16 {grid-area: s16;}
 
+.player_turn_overlay {
+  position: absolute;
+  background: #282c3480;
+
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
